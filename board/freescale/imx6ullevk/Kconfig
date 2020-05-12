@@ -1,0 +1,12 @@
+if TARGET_IMX6ULL_EVK
+
+config SYS_BOARD
+	default "imx6ullevk"
+
+config SYS_VENDOR
+	default "freescale"
+
+config SYS_CONFIG_NAME
+	default "imx6ullevk"
+
+endif
