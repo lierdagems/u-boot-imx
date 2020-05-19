@@ -82,7 +82,7 @@
 #define MTDIDS_DEFAULT		"nand0=gpmi-nand"
 #define CONFIG_BOOT_MEDIA	"bootmedia=echo Booting from NAND ...;\0"
 #define CONFIG_BOOT_ARGS        "bootargs=console=ttymxc0,115200 ubi.mtd=3 "  \
-					"root=ubi0:rootfs rootfstype=ubifs " \
+					"root=ubi0:imx6ull256-rootfs rootfstype=ubifs " \
 					CONFIG_BOOTARGS_CMA_SIZE \
 					"mtdparts=gpmi-nand:4m(uboot),10m(kernel),1m(dtb),-(rootfs)\0"
 #else
