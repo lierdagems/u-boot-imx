@@ -23,7 +23,7 @@
 #endif
 #endif
 
-#define PHYS_SDRAM_SIZE		SZ_128M
+#define PHYS_SDRAM_SIZE		SZ_256M
 #define CONFIG_BOOTARGS_CMA_SIZE   "cma=96M "
 
 /* DCDC used, no PMIC */
@@ -82,7 +82,7 @@
 #define MTDIDS_DEFAULT		"nand0=gpmi-nand"
 #define CONFIG_BOOT_MEDIA	"bootmedia=echo Booting from NAND ...;\0"
 #define CONFIG_BOOT_ARGS        "bootargs=console=ttymxc0,115200 ubi.mtd=3 "  \
-					"root=ubi0:imx6ull128-rootfs rootfstype=ubifs " \
+					"root=ubi0:rootfs rootfstype=ubifs " \
 					CONFIG_BOOTARGS_CMA_SIZE \
 					"mtdparts=gpmi-nand:4m(uboot),10m(kernel),1m(dtb),-(rootfs)\0"
 #else
@@ -134,7 +134,7 @@
 /**
 
 -------------------------------------------------
-|    4M   |   10M    |  1M   |        113M      |
+|    4M   |   10M    |  1M   |        241M      |
 |  uboot  |  kernel  |  dtb  |      fsImage     |
 -------------------------------------------------
 */
@@ -144,13 +144,13 @@
  * 0x00000000-0x00400000 : "uboot"                                         
  * 0x00400000-0x00e00000 : "kernel"                                        
  * 0x00e00000-0x00f00000 : "dtb"                                           
- * 0x00f00000-0x08000000 : "rootfs"
+ * 0x00f00000-0x10000000 : "rootfs"
 
  * #: name                size            offset          mask_flags              
  * 0: uboot               0x00400000      0x00000000      0
  * 1: kernel              0x00a00000      0x00400000      0
  * 2: dtb                 0x00100000      0x00e00000      0
- * 3: rootfs              0x07100000      0x00f00000      0
+ * 3: rootfs              0x0f100000      0x00f00000      0
  */
 
 #define CONFIG_BOOTCOMMAND \
@@ -172,7 +172,7 @@
 				"nand write ${fdt_addr} 0x00e00000 $filesize; " \
 			"fi; " \
 			"if run loadubimmc; then " \
-				"nand erase 0x00f00000 0x07100000;" \
+				"nand erase 0x00f00000 0x0f100000;" \
 				"nand write ${fdt_addr} 0x00f00000 $filesize; " \
 			"fi; " \
 			"led 0 off; " \
